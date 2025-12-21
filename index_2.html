@@ -86,8 +86,7 @@
 
 				<div class="item">
 			<div class="animate-box">
-				<a href="https://www.home-assistant.io" class="fh5co-board-img"><img src="images/logo_dddppp.de.jpeg" alt="home assistant Consulting for smarthome automation"></a>
-				<div class="fh5co-desc">
+					<div class="fh5co-desc">
 					 x x 
 <div id="posts"></div>
 
@@ -96,7 +95,7 @@ async function loadPosts() {
   const postsContainer = document.getElementById("posts");
 
   // Liste der Dateien im posts-Ordner abrufen
-  const response = await fetch("posts/");
+  const response = await fetch("Posts/");
   const text = await response.text();
 
   // HTML Directory Listing parsen (GitHub Pages zeigt das als <a>-Links)
@@ -113,7 +112,7 @@ async function loadPosts() {
   mdFiles.reverse();
 
   for (const file of mdFiles) {
-    const md = await fetch("posts/" + file).then(r => r.text());
+    const md = await fetch("Posts/" + file).then(r => r.text());
     const html = marked.parse(md);
 
     const article = document.createElement("article");
