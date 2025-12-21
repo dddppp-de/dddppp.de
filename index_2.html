@@ -88,40 +88,6 @@
 					<div class="fh5co-desc">
 					 x x 3
 
-  <div id="posts"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-<script>
-async function loadPosts() {
-  const postsContainer = document.getElementById("posts");
-
-  // Ordner "Posts" abrufen
-  const response = await fetch("Posts/");
-  const text = await response.text();
-
-  // HTML Directory Listing parsen
-  const parser = new DOMParser();
-  const html = parser.parseFromString(text, "text/html");
-  const links = [...html.querySelectorAll("a")];
-
-  // Nur .md Dateien herausfiltern
-  const mdFiles = links
-    .map(a => a.getAttribute("href"))
-    .filter(href => href.endsWith(".md"));
-
-  // Neueste zuerst (weil GitHub alphabetisch sortiert)
-  mdFiles.reverse();
-
-  for (const file of mdFiles) {
-    const md = await fetch("Posts/" + file).then(r => r.text());
-    const html = marked.parse(md);
-
-    const article = document.createElement("article");
-    article.innerHTML = html;
-
-    postsContainer.appendChild(article);
-
 
 
 
