@@ -1,0 +1,14 @@
+
+<section id="blog">
+  <h2>Neueste Posts</h2>
+  <ul>
+    {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>{{ post.date | date: "%d.%m.%Y" }}</small>
+        <p>{{ post.excerpt }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+``
